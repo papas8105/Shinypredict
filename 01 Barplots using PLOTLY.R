@@ -5,14 +5,14 @@
 
 
 Tabledesc1 <- POP_POPULATED  %>%
-        select(Confirmed,Country,date) %>% 
-          mutate(Max_date = max(POP_POPULATED$date)) %>% 
-          mutate(Flag_max_date = ifelse(Max_date == date,1,0)) %>% 
-          filter(Flag_max_date==1) %>% 
-          arrange(desc(Confirmed)) %>% 
-          group_by(date) %>% 
-            slice(1:10) %>% 
-          ungroup()
+              select(Confirmed,Country,date) %>% 
+              mutate(Max_date = max(POP_POPULATED$date)) %>% 
+              mutate(Flag_max_date = ifelse(Max_date == date,1,0)) %>% 
+              filter(Flag_max_date==1) %>% 
+              arrange(desc(Confirmed)) %>% 
+              group_by(date) %>% 
+              slice(1:10) %>% 
+              ungroup()
 
 
 TabledesC <- Tabledesc1 %>% 
