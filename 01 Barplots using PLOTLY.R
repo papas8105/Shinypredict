@@ -1,7 +1,7 @@
 # C:\Pablo UK\43 R projects 2020\04 My Shiny app\04 Mycovid19 app\07 METHODOLOGY
 # File: 08 Barplots using PLOTLY.R
 
-# EXAMPLE OF A PLOTLY BARPLOT 
+# EXAMPLE OF A PLOTLY BARPLOT  
 
 
 Tabledesc1 <- POP_POPULATED  %>%
