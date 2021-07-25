@@ -1,0 +1,14 @@
+This first Shiny dashboard is made of four tabs
+1. About
+- General overview of the app, data sources description and refresh scheduled
+
+2. Map
+- Workd map displaying nymber of deaths by country, using LEAFLET map and Pop-ups to display detailed information on each country
+
+3. PLots
+
+- Line and bar charts using PLOTLY to dispay new cases, recoveerd and deatch COVID19 cases
+
+4. Forecast
+
+- Forecast tab using TIDYMODELS (WIP)
