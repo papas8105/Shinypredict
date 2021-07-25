@@ -1,0 +1,27 @@
+
+<style>
+
+/* Set of CSS styles to be used */
+
+/* slide titles */
+.reveal h3 { 
+  font-size: 100px;
+  color: blue;
+}
+
+/* heading for slides with two hashes ## */
+.reveal .slides section .slideContent h2 {
+   font-size: 40px;
+   font-weight: bold;
+   color: green;
+}
+
+/* ordered and unordered list styles */
+.reveal ul, 
+.reveal ol {
+    font-size: 50px;
+    color: red;
+    list-style-type: square;
+}
+
+</style>
