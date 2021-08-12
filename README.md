@@ -7,4 +7,4 @@ The Shiny app is structured into three sections: Map, Plots and Forecast tabs. F
 
 It  also includes a tab with several predictive models, as an example of further modelling capacibilities that can be implemented in the Shiny app, using several univariate time series models: this tab R scripts start by splitting original data set into Train and Test sets, to allow futher down to calculate RMSE accuracy measure  to assess each model. 
 
-Also the predictive models will include ETS, ENSAMBLE and TBATS models for univariate Time Series forecasting using tsensembler R package and also Tidymodels as the R model framework to select the best performing model for the final output prdiction. 
+Also the predictive models will include SARIMA, PROPHET, ETS, ENSAMBLE and TBATS models for univariate Time Series forecasting using tsensembler R package and also Tidymodels as the R model framework to select the best performing model for the final output prdiction. 
