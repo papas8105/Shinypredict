@@ -1,5 +1,5 @@
 
-# R Script: 01 Lead and pop figures FINAL GITHUB.R
+# R Script: 01 MERGE LEAFLET AND POP FIGURES.R
 #
 # Import external script using: source("UI/ui_population_figures.R",local =TRUE) 
 #
@@ -12,7 +12,7 @@ setwd("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app")
 
 # # Include population figures 
 
-source("UI/ui_population_figures.R",local =TRUE) 
+source("UI/ui_get_population_figures.R",local =TRUE) 
 
 # 1 Load population figures
 
@@ -80,6 +80,15 @@ POPF <- PLOT_LEAFLET_CDR_NUM %>%
 rm(POPD,POPE)
 save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/CHECKS/POP_FIGURES_FINAL.RData")
 
+file_pathCHK <-('C://Pablo UK//43 R projects 2020//04 My Shiny app//04 Mycovid19 app//CHECKS')
+File_name <-'/PLOT_POP.csv' 
+write.csv(POPF,paste0(file_pathCHK,File_name),row.names = T)
+
+
+File_name <-'/PLOT_LEAFLET_MAPS.csv' 
+write.csv(PLOT_LEAFLET_MAPS,paste0(file_pathCHK,File_name),row.names = T)
+
+
 # Check there are not missing values
 # [1] "Country"    "date"       "Confirmed"  "Death"      "Recovered"  "year"       "population"
 names(POPF)
@@ -95,8 +104,13 @@ TEST_MISSING_RECOV
 rm(TEST_MISSING_CONF,TEST_MISSING_DEATH,TEST_MISSING_RECOV)
 
 # There are not missing values
+
 # FINALLY THE DATASET WE WANT TO MERGE AND USE IS CALLED
 POPF_CLEAN <- POPF
+
+file_pathCHK <-('C://Pablo UK//43 R projects 2020//04 My Shiny app//04 Mycovid19 app//CHECKS')
+File_name <-'/POPF_CLEAN.csv' 
+write.csv(POPF_CLEAN,paste0(file_pathCHK,File_name),row.names = T)
 
 # FINALLY THIS IS THE RIGHT DATASET TO COMPUTE RATES
 POPG <- POPF_CLEAN
@@ -135,6 +149,11 @@ POPG_RATESF <- POPG_RATES %>%
 tail(POPG_RATESF)
 
 
+## NOW IT IS WHEN WE COMPUTE THE 7D AVERAGE FOR EACH COUNTRY
+# Using a GROUP_BY
+#  group_by(Country) %>% 
+# function rollmean
+
 library(zoo)
 
 head(POPG_RATESF)
@@ -166,12 +185,24 @@ TEST_MISS <- POPG_RATESF  %>%
 
 getwd()
 
+# Replace NA by 0 for specific variables
+file_pathCHK <-('C://Pablo UK//43 R projects 2020//04 My Shiny app//04 Mycovid19 app//CHECKS')
+File_name <-'/POPG_RATESF.csv' 
+write.csv(POPG_RATESF,paste0(file_pathCHK,File_name),row.names = T)
+
+
 # Check values
 head(POPG_RATESG)
+
 
 # REMOVE MISSING VALUES 
 POPRATESG <- POPG_RATESF %>% 
              drop_na()
+
+
+file_pathCHK <-('C://Pablo UK//43 R projects 2020//04 My Shiny app//04 Mycovid19 app//CHECKS')
+File_name <-'/POPRATESG.csv' 
+write.csv(POPRATESG,paste0(file_pathCHK,File_name),row.names = T)
 
 # Save worksapce 
 save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/CHECKS/POPRATESG.RData")
@@ -180,13 +211,24 @@ save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/CHEC
 # LOAD LIBRARY FOR ROLLMEAN
 # library(zoo)
 # cases not rates for the rolling average
+#
+#
 # ConD,RecD,DeathD)
 names(POPRATESG)
 
-## NOW IT IS WHEN WE COMPUTE THE 7D AVERAGE FOR EACH COUNTRY
-# Using a GROUP_BY
-#  group_by(Country) %>% 
-# function rollmean
+# https://www.storybench.org/how-to-calculate-a-rolling-average-in-r/
+# To calculate a simple moving average (over 7 days), we can use the rollmean() function from the zoo package. This function takes a k, which is an 'integer width of the rolling window. 
+# The code below calculates a 3, 5, 7, 15, and 21-day rolling average for the deathsfrom COVID in the US.
+# JHCovid19States <- JHCovid19States %>%
+#  dplyr::arrange(desc(state)) %>% 
+#  dplyr::group_by(state) %>% 
+#  dplyr::mutate(death_03da = zoo::rollmean(deaths, k = 3, fill = NA),
+#                death_05da = zoo::rollmean(deaths, k = 5, fill = NA),
+#                death_07da = zoo::rollmean(deaths, k = 7, fill = NA),
+#                death_15da = zoo::rollmean(deaths, k = 15, fill = NA),
+#                death_21da = zoo::rollmean(deaths, k = 21, fill = NA)) %>% 
+#  dplyr::ungroup()
+
 library(zoo)
 
 RATES7DGAVG <- POPRATESG %>%
@@ -196,12 +238,23 @@ RATES7DGAVG <- POPRATESG %>%
                        REC_ma07 = rollmean(RecD,k = 7, fill = NA),
                        DEATH_ma07 = rollmean(DeathD, k = 7, fill = NA))
 
+file_pathCHK <-('C://Pablo UK//43 R projects 2020//04 My Shiny app//04 Mycovid19 app//CHECKS')
+File_name <-'/RATES7DGAVG.csv' 
+write.csv(RATES7DGAVG,paste0(file_pathCHK,File_name),row.names = T)
+
 # Save worksapce 
 save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/CHECKS/RATES7DGAVG.RData")
 
+
+# final dataset for SHINY APP
+file_pathCHK <-('C://Pablo UK//43 R projects 2020//04 My Shiny app//04 Mycovid19 app//CHECKS')
+File_name <-'/RATESREADYSHINY.CSV' 
+write.csv(RATES7DGAVG,paste0(file_pathCHK,File_name),row.names = T)
+
 # FINAL DATASET THAT GOES INTO SHINY APP
 # Name: POP_POPULATED
- POP_POPULATED <- RATES7DGAVG
+ 
+POP_POPULATED <- RATES7DGAVG
 head(POP_POPULATED)
 names(POP_POPULATED)
 
@@ -248,16 +301,20 @@ POP_POPULATED
 # AND FINALLY SAVE PLOT_LEAFLEFT database as PLOT_LEAFLET.Rdata 
 save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/DATA_FOR_SHINY_APP.Rdata")
 
+
+
 # Remove all previous datasets except PLOT_LEAFLET
 # View(PLOT_LEAFLET_CDR_NUM)
 #  View(POP_POPULATED)
 #
 # Main population dataset RATES7DGAVG
 #
+
+
 save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/RATES_FOR_SHINY_APP.Rdata")
+
 load("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/PLOT LEAFLET CDR NUM.RData")
 
-# Remove all datasets except final output required for Shiny app script
 rm(list=ls()[!(ls()%in%c('RATES7DGAVG','POP_POPULATED','PLOT_LEAFLET_CDR_NUM','PLOT_LEAFLET_MAPS'))])
 
 # Remove all except  datasets for app
