@@ -1,6 +1,7 @@
 This folder will contain all predictive models used in the Shiny app
-1. Function to split data in TRAIN and TEST sets
-2. TIDYMODELS framework to run the following moodels: 
+1. Create new data set for WORLDWIDE number of new, recovered and death COVID19 cases
+2. Function to split data in TRAIN and TEST sets
+3. TIDYMODELS framework to run the following moodels: 
   - ETS
   - SARIMA
   - HYBRID
