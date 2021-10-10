@@ -1,6 +1,4 @@
-# R Script: 55 MY APP barplots incl country name.R 
-# Updated 29 JUN 2020 (All features included) 
-# Last update: 10 JUL 2021
+# R Script: 02 ui_server_SHINY_APP.R
 
 # C:\Pablo UK\43 R projects 2020\04 My Shiny app\10 Shiny TEMPLATES\LEAFLET MAP\Interactive maps
 getwd()
