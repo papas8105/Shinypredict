@@ -11,13 +11,13 @@ getwd()
 # LOAD population figures in the right way
 WDIinputdata<-WDI(indicator=c("SP.POP.TOTL"),extra=TRUE)
 
-file_pathCHK <-('C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/data')
+file_pathCHK <-('C:/Pablo UK/43 R projects 2021/04 My Shiny app/04 Mycovid19 app/data')
 File_name <-'/WDIinputdata.csv' 
 write.csv(WDIinputdata,paste0(file_pathCHK,File_name),row.names = T)
 
 # Important load .csv file replacing empty variable names by NA 
 # Include na.strings = c("","NA") to replace empty values by NA
-WDIinputdata_raw <- read.csv("C:\\Pablo UK\\43 R projects 2020\\04 My Shiny app\\04 Mycovid19 app\\data\\WDIinputdata.csv", header=T, na.strings=c("","NA"))
+WDIinputdata_raw <- read.csv("C:\\Pablo UK\\43 R projects 2021\\04 My Shiny app\\04 Mycovid19 app\\data\\WDIinputdata.csv", header=T, na.strings=c("","NA"))
 
 WDIinputdata <-WDIinputdata_raw %>% select(country,year,population=SP.POP.TOTL,capital)
 WDIinputdata2 <-WDIinputdata %>% select(country,year,population,capital) 
@@ -37,10 +37,10 @@ POP_DATA_2019 <- POP_DATA_WDI
 rm(list=ls()[!(ls()%in%c('POP_DATA_WDI','POP_DATA_2019','PLOT_LEAFLET_CDR_NUM','PLOT_LEAFLET_RATES'))])
 
 # sAVE RAW Confirmed Death Recovered figures
-save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/UI/POP_FIGURES_RAW.RData")
+save.image("C:/Pablo UK/43 R projects 2021/04 My Shiny app/04 Mycovid19 app/UI/POP_FIGURES_RAW.RData")
 
 
-file_pathCHK <-('C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/UI')
+file_pathCHK <-('C:/Pablo UK/43 R projects 2021/04 My Shiny app/04 Mycovid19 app/UI')
 File_name <-'/POP_DATA_2019.csv' 
 write.csv(POP_DATA_WDI,paste0(file_pathCHK,File_name),row.names = T)
 
@@ -77,18 +77,18 @@ getwd()
   rm(list=ls()[!(ls()%in%c('POP_POPULATED','PLOT_LEAFLET_CDR_NUM'))])
 
   # Save two main datasets
-  file_pathCHK <-('C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/CHECKS')
+  file_pathCHK <-('C:/Pablo UK/43 R projects 2021/04 My Shiny app/04 Mycovid19 app/CHECKS')
   File_name <-'/POP_POPULATED_2019.csv' 
   write.csv(POP_POPULATED,paste0(file_pathCHK,File_name),row.names = T)
   File_name <-'/PLOT_LEAFLET_CDR_NUM.csv' 
   write.csv(PLOT_LEAFLET_CDR_NUM,paste0(file_pathCHK,File_name),row.names = T)
  
-  save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/CHECKS/MAPS AND POPULATION FILES TO MERGE.RData")
+  save.image("C:/Pablo UK/43 R projects 2021/04 My Shiny app/04 Mycovid19 app/CHECKS/MAPS AND POPULATION FILES TO MERGE.RData")
   
   
-  save.image("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/POP_FIGURES_FINAL.RData")
+  save.image("C:/Pablo UK/43 R projects 2021/04 My Shiny app/04 Mycovid19 app/POP_FIGURES_FINAL.RData")
   
-  load("C:/Pablo UK/43 R projects 2020/04 My Shiny app/04 Mycovid19 app/PLOT LEAFLET CDR NUM.RData")
+  load("C:/Pablo UK/43 R projects 2021/04 My Shiny app/04 Mycovid19 app/PLOT LEAFLET CDR NUM.RData")
   
   
   
