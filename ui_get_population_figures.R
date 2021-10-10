@@ -1,4 +1,3 @@
-
 # R Script: ui_get_population_figures.R
 
 # 1 Load required libraries
