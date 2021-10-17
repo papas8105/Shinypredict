@@ -12,7 +12,8 @@ from fabric.api import *
         'pi@192.168.1.64',
         'pi@192.168.1.64',
         'pi@192.168.1.64',
-
+        'pi@192.168.1.64',
+        'pi@192.168.1.64'
     ]
     env.password='raspberry'
 
