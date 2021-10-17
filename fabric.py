@@ -3,7 +3,7 @@
 # 1. First wrap up all all Raspberry pi cluster's IP using env.host()
 # 2. Then send any commands to the cluster using fab cmd "command"
 
-# CLUSTER 3 RASPBERRY MODEL 8 8GB RAM
+# CLUSTER 5 RASPBERRY MODEL 8 8GB RAM
 
 
 from fabric.api import *
