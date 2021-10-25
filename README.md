@@ -1,5 +1,6 @@
 # Shinypredict
 ![GitHub all releases](https://img.shields.io/github/downloads/Pablo-source/Shinypredict/total?label=Downloads&style=flat-square)
+![GitHub language count](https://img.shields.io/github/languages/count/Pablo-source/Shinypredict)
 
 A predictive model running inside a shiny app from open data sources.
 
