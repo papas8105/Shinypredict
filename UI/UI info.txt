@@ -1,0 +1,1 @@
+This folder is part of the Shinypredict project, It includes all UI files for the About tab, data preparation and user interface section of the app. 
