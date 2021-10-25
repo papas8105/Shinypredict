@@ -1,4 +1,6 @@
 # Shinypredict
+![GitHub all releases](https://img.shields.io/github/downloads/Pablo-source/Shinypredict/total?label=Downloads&style=flat-square)
+
 A predictive model running inside a shiny app from open data sources.
 
 Data is refreshed daily from JHU Github repository and daily 10,000 population rates are calculated in two different R scripts that feed into the Shiny app displayed on the Shiny server. 
