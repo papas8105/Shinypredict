@@ -1,4 +1,5 @@
-# 01 Load required data sets
+# 01 Load required data sets 
+# Save it on the predictive models folder
 
 # After having executed the following scripts
 #  00 Maps data prep FINAL
